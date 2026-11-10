@@ -2358,11 +2358,27 @@ export async function scaleDownOwned(
             "scale_down",
             async () => {
               try {
+                // Verify pane-workspace membership independently of agent liveness.
+                // Even if the agent dies before cleanup, we must verify the pane
+                // is actually removed from the provider target.
                 let lastLiveness: "alive" | "dead" | "unknown" = paneOwnership
                   ? await getOwnedWorkerLiveness(paneOwnership)
                   : initialPaneLiveness;
                 if (lastLiveness === "dead") return true;
-                if (!paneOwnership) return false;
+                if (!paneOwnership) {
+                  // Can't get ownership; try to verify workspace membership directly
+                  const stillBelongs = await workerPaneBelongsToOwnedProviderTarget({
+                    provider: providerForTeamTarget(config.tmux_session, paneId),
+                    providerTarget: config.tmux_session,
+                    paneId,
+                    ...(config.tmux_server_identity
+                      ? { tmuxServerIdentity: config.tmux_server_identity }
+                      : {}),
+                  });
+                  // If pane doesn't belong to workspace, cleanup succeeded
+                  return !stillBelongs;
+                }
+                // Ownership exists; attempt to kill the pane
                 for (
                   let cleanupAttempt = 0;
                   cleanupAttempt < 2;
