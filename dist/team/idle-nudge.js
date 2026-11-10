@@ -10,7 +10,7 @@
  *
  * @see https://github.com/anthropics/oh-my-claudecode/issues/1047
  */
-import { paneLooksReady, paneHasActiveTask, captureOwnedTeamPane, } from './tmux-session.js';
+import { paneLooksReady, paneHasActiveTask, captureOwnedTeamPane, providerForTeamTarget, } from './tmux-session.js';
 import { isValidTeamInstanceId, isValidTmuxServerIdentity, } from './types.js';
 export const DEFAULT_NUDGE_CONFIG = {
     delayMs: 30_000,
@@ -61,7 +61,7 @@ export class NudgeTracker {
             return [];
         const sessionName = typeof authority.sessionName === 'string' ? authority.sessionName : '';
         const provider = authority.provider
-            ?? (sessionName.startsWith('cmux:') ? 'cmux' : 'tmux');
+            ?? providerForTeamTarget(sessionName);
         if (!Array.isArray(paneIds)
             || (provider !== 'tmux' && provider !== 'cmux')
             || sessionName.length === 0

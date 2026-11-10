@@ -194,7 +194,7 @@ export function createMinimalDaemonEnv(): NodeJS.ProcessEnv {
   }
   // Forward OMC_* env vars so the daemon can call getNotificationConfig()
   for (const key of Object.keys(process.env)) {
-    if (key.startsWith("OMC_")) {
+    if (key.startsWith('OMC_')) {
       env[key] = process.env[key];
     }
   }
@@ -429,11 +429,23 @@ const APPROVAL_DENY_WORDS = new Set([
 /**
  * Parse a reply as an approval decision. Returns null when the reply does
  * not look like a decision (the message is then left for normal handling).
+ * Question marks indicate uncertainty and always return null.
  */
 export function parseApprovalReply(text: string): "approved" | "denied" | null {
-  const firstWord = text.trim().toLowerCase().split(/\s+/)[0] || "";
-  if (APPROVAL_APPROVE_WORDS.has(firstWord)) return "approved";
-  if (APPROVAL_DENY_WORDS.has(firstWord)) return "denied";
+  const trimmed = text.trim().toLowerCase();
+  if (!trimmed) return null;
+  
+  // Question marks indicate uncertainty, so reject immediately
+  if (trimmed.includes("?") || trimmed.includes("？")) return null;
+  
+  // Extract the first word as a sequence of non-whitespace, non-punctuation characters.
+  // This handles cases like "Yes, ship it" → "yes" and "拒绝，先修测试" → "拒绝".
+  const match = trimmed.match(/^([^\s.!,、，。?？]+)/u);
+  if (!match) return null;
+  
+  const cleanedWord = match[1];
+  if (APPROVAL_APPROVE_WORDS.has(cleanedWord)) return "approved";
+  if (APPROVAL_DENY_WORDS.has(cleanedWord)) return "denied";
   return null;
 }
 
