@@ -2364,7 +2364,10 @@ export async function scaleDownOwned(
                 let lastLiveness: "alive" | "dead" | "unknown" = paneOwnership
                   ? await getOwnedWorkerLiveness(paneOwnership)
                   : initialPaneLiveness;
-                if (lastLiveness === "dead") return true;
+                // For Herdr, agent death (liveness=dead) does not prove pane removal;
+                // we must call killOwnedWorkerPane to actually close the pane.
+                // For tmux, dead panes are safe to skip unless we need membership proof.
+                if (lastLiveness === "dead" && paneOwnership?.provider !== "herdr") return true;
                 if (!paneOwnership) {
                   // Can't get ownership; try to verify workspace membership directly
                   const stillBelongs = await workerPaneBelongsToOwnedProviderTarget({

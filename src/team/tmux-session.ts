@@ -5151,6 +5151,9 @@ export async function sendToWorker(
     // Send text in literal mode with -- separator
     if (isHerdrPaneId(paneId)) {
       await herdrSendPrompt(paneId, message);
+      // Herdr pane run directly executes the command, so short-circuit
+      // after submission; no need for additional submit/retry rounds.
+      return true;
     } else if (isCmuxSurfaceTarget(paneId)) {
       await cmuxSendSurface(paneId, message);
     } else {

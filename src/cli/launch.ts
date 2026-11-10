@@ -50,6 +50,7 @@ import {
   ensureHerdrServer,
   herdrCreateWorkerTab,
   herdrCreateWorkspace,
+  herdrCloseWorkspace,
   herdrRunPaneCommand,
 } from '../team/herdr-session.js';
 import { resolveTeamMultiplexer } from '../team/tmux-session.js';
@@ -924,14 +925,23 @@ async function runClaudeInHerdrWorkspace(cwd: string, args: string[]): Promise<v
     throw error;
   }
 
+  let allocatedWorkspaceId: string | undefined;
   try {
     await ensureHerdrServer();
-    const workspaceId = await herdrCreateWorkspace(cwd, label);
-    const tab = await herdrCreateWorkerTab(workspaceId, cwd, 'claude');
+    allocatedWorkspaceId = await herdrCreateWorkspace(cwd, label);
+    const tab = await herdrCreateWorkerTab(allocatedWorkspaceId, cwd, 'claude');
     await herdrRunPaneCommand(tab.paneId, launch.command);
     console.log(`[omc] Claude launched in Herdr workspace "${label}" (pane ${tab.paneId}).`);
     console.log('[omc] Attach with the Herdr TUI: run `herdr` and open the workspace.');
   } catch (error) {
+    // Clean up the allocated Herdr workspace before falling back
+    if (allocatedWorkspaceId) {
+      try {
+        await herdrCloseWorkspace(allocatedWorkspaceId);
+      } catch {
+        // Workspace cleanup failed, but continue with artifact cleanup
+      }
+    }
     // The pane shell never consumed the transport; remove its artifacts.
     launch.cleanup();
     throw error instanceof Error ? error : new Error(String(error));

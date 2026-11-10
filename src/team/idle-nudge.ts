@@ -128,7 +128,7 @@ export class NudgeTracker {
     const provider = authority.provider
       ?? providerForTeamTarget(sessionName);
     if (!Array.isArray(paneIds)
-      || (provider !== 'tmux' && provider !== 'cmux')
+      || (provider !== 'tmux' && provider !== 'cmux' && provider !== 'herdr')
       || sessionName.length === 0
       || !isValidTeamInstanceId(authority.instanceId)
       || sessionName.trim() !== sessionName
@@ -137,7 +137,7 @@ export class NudgeTracker {
       || typeof authority.executeNudge !== 'function'
       || (provider === 'tmux'
         && (!authority.tmuxServerIdentity || !isValidTmuxServerIdentity(authority.tmuxServerIdentity)))
-      || (provider === 'cmux' && authority.tmuxServerIdentity !== undefined)) {
+      || ((provider === 'cmux' || provider === 'herdr') && authority.tmuxServerIdentity !== undefined)) {
       return [];
     }
     const now = Date.now();

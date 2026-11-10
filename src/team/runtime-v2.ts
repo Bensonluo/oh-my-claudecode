@@ -135,7 +135,7 @@ import {
   isHerdrSessionTarget,
   providerForTeamTarget,
 } from "./tmux-session.js";
-import { herdrWorkspaceIdFromSessionTarget } from "./herdr-session.js";
+import { herdrWorkspaceIdFromSessionTarget, herdrCloseWorkspace } from "./herdr-session.js";
 import {
   composeInitialInbox,
   ensureWorkerStateDir,
@@ -5783,10 +5783,12 @@ async function rollbackStartedNativeWorktreeStartup(args: {
     args.teamName,
     args.cwd,
   ).hasEvidence;
+  const herdrWorkspaceCreated = args.sessionName.startsWith("herdr:");
   const sessionCleanupRequired =
     (args.launchedWorkers?.length ?? 0) > 0 ||
     args.workerPaneIds.length > 0 ||
-    args.sessionMode !== "split-pane";
+    args.sessionMode !== "split-pane" ||
+    herdrWorkspaceCreated;
   try {
     await writeStartedStartupRollbackEvidence({
       ...args,
@@ -5874,26 +5876,46 @@ async function rollbackStartedNativeWorktreeStartup(args: {
       !(
         args.workerPaneIds.length === 0 &&
         args.sessionMode === "split-pane" &&
-        (args.launchedWorkers?.length ?? 0) > 0
+        (args.launchedWorkers?.length ?? 0) > 0 &&
+        !herdrWorkspaceCreated
       )
     ) {
-      const sessionCleaned = await killTeamSession(
-        args.sessionName,
-        args.workerPaneIds,
-        args.leaderPaneId ?? undefined,
-        {
-          sessionMode: args.sessionMode,
-          ...(args.tmuxServerIdentity
-            ? { tmuxServerIdentity: args.tmuxServerIdentity }
-            : {}),
-        },
-      );
-      if (sessionCleaned === false) {
-        await writeStartedStartupRollbackEvidence({
-          ...args,
-          reason: "session_cleanup_unverified",
-        });
-        throw new Error("worker_cleanup_incomplete:session_cleanup_unverified");
+      // Herdr workspace with no panes yet: close the workspace directly
+      if (
+        herdrWorkspaceCreated &&
+        args.workerPaneIds.length === 0 &&
+        args.sessionMode === "split-pane"
+      ) {
+        try {
+          await herdrCloseWorkspace(
+            herdrWorkspaceIdFromSessionTarget(args.sessionName),
+          );
+        } catch {
+          await writeStartedStartupRollbackEvidence({
+            ...args,
+            reason: "herdr_workspace_cleanup_unverified",
+          });
+          throw new Error("worker_cleanup_incomplete:herdr_workspace_cleanup_unverified");
+        }
+      } else {
+        const sessionCleaned = await killTeamSession(
+          args.sessionName,
+          args.workerPaneIds,
+          args.leaderPaneId ?? undefined,
+          {
+            sessionMode: args.sessionMode,
+            ...(args.tmuxServerIdentity
+              ? { tmuxServerIdentity: args.tmuxServerIdentity }
+              : {}),
+          },
+        );
+        if (sessionCleaned === false) {
+          await writeStartedStartupRollbackEvidence({
+            ...args,
+            reason: "session_cleanup_unverified",
+          });
+          throw new Error("worker_cleanup_incomplete:session_cleanup_unverified");
+        }
       }
     }
     if (worktreeCleanupRequired) {
@@ -9570,6 +9592,20 @@ export async function resumeTeamV2(
   // Upstream #4821 replaced the previous cmux/herdr early-return with real
   // ownership verification, which now covers tmux and cmux targets.
   if (isHerdrSessionTarget(sessionName)) {
+    // Verify the persisted Herdr workspace still exists before declaring resume successful
+    try {
+      const workspaceId = herdrWorkspaceIdFromSessionTarget(sessionName);
+      const membership = await verifyTeamTargetOwnership({
+        provider: 'herdr',
+        providerTarget: sessionName,
+        recipient: 'leader-fixed',
+        recipientRole: 'leader',
+        paneId: workspaceId,
+      });
+      if (membership.kind !== 'owned') return null;
+    } catch {
+      return null;
+    }
     return {
       teamName: sanitized,
       sanitizedName: sanitized,

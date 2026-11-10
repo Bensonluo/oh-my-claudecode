@@ -459,9 +459,14 @@ async function pollLoop(config: Required<DaemonConfig>): Promise<void> {
             ? revalidateBlockedHerdrPanes(herdrTracked, config.paneLinesToCapture)
             : Promise.resolve<BlockedPaneType[] | null>([]),
         ]);
-        const currentlyBlockedPanes = tmuxRevalidated === null || herdrRevalidated === null
+        // Process conclusive provider results independently; retain only inconclusive panes
+        const conclusiveTmuxPanes = tmuxRevalidated ?? [];
+        const conclusiveHerdrPanes = herdrRevalidated ?? [];
+        const hasInconclusiveTmux = tmuxTracked.length > 0 && tmuxRevalidated === null;
+        const hasInconclusiveHerdr = herdrTracked.length > 0 && herdrRevalidated === null;
+        const currentlyBlockedPanes = hasInconclusiveTmux || hasInconclusiveHerdr
           ? null
-          : [...tmuxRevalidated, ...herdrRevalidated];
+          : [...conclusiveTmuxPanes, ...conclusiveHerdrPanes];
 
         if (currentlyBlockedPanes === null) {
           state.resumePending = true;

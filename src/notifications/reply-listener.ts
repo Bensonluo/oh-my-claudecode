@@ -617,9 +617,10 @@ export async function injectReplyIntoHerdrPane(
 
   if (!content.trim()) {
     log(
-      `WARN: Herdr pane ${paneId} appears empty. Skipping injection, removing stale mapping.`,
+      `WARN: Herdr pane ${paneId} capture was empty or inconclusive. Retrying on next poll.`,
     );
-    removeMessagesByPane(paneId);
+    // Capture timeout or empty output is inconclusive; do not prune mappings.
+    // Only remove mappings when pane is confirmed absent (not just empty capture).
     return false;
   }
 
