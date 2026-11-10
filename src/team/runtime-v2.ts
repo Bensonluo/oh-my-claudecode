@@ -135,7 +135,7 @@ import {
   isHerdrSessionTarget,
   providerForTeamTarget,
 } from "./tmux-session.js";
-import { herdrWorkspaceIdFromSessionTarget, herdrCloseWorkspace } from "./herdr-session.js";
+import { herdrWorkspaceIdFromSessionTarget, herdrCloseWorkspace, herdrWorkspaceExists } from "./herdr-session.js";
 import {
   composeInitialInbox,
   ensureWorkerStateDir,
@@ -9592,20 +9592,11 @@ export async function resumeTeamV2(
   // Upstream #4821 replaced the previous cmux/herdr early-return with real
   // ownership verification, which now covers tmux and cmux targets.
   if (isHerdrSessionTarget(sessionName)) {
-    // Verify the persisted Herdr workspace still exists before declaring resume successful
-    try {
-      const workspaceId = herdrWorkspaceIdFromSessionTarget(sessionName);
-      const membership = await verifyTeamTargetOwnership({
-        provider: 'herdr',
-        providerTarget: sessionName,
-        recipient: 'leader-fixed',
-        recipientRole: 'leader',
-        paneId: workspaceId,
-      });
-      if (membership.kind !== 'owned') return null;
-    } catch {
-      return null;
-    }
+    // Verify the persisted Herdr workspace still exists before declaring resume successful.
+    // Use workspace-level existence check (not pane membership) for resume recovery.
+    const workspaceId = herdrWorkspaceIdFromSessionTarget(sessionName);
+    const exists = await herdrWorkspaceExists(workspaceId);
+    if (exists !== 'exists') return null;
     return {
       teamName: sanitized,
       sanitizedName: sanitized,

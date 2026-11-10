@@ -664,6 +664,33 @@ export function buildWorkspacePaneListArgs(workspaceId: string): string[] {
   return ["pane", "list", "--workspace", workspaceId];
 }
 
+export type HerdrWorkspaceExistence = "exists" | "unavailable";
+
+/**
+ * Check if a Herdr workspace exists without requiring a specific pane.
+ * Used for workspace-level operations like team resume verification.
+ *
+ *   - 'exists': the workspace query succeeded (panes list, even if empty)
+ *   - 'unavailable': the query failed (server/binary/timeout)
+ */
+export async function herdrWorkspaceExists(
+  workspaceId: string,
+  options: {
+    env?: NodeJS.ProcessEnv;
+    execFn?: HerdrExecOptions["execFn"];
+  } = {},
+): Promise<HerdrWorkspaceExistence> {
+  try {
+    await runHerdrResult<{ panes?: HerdrPaneLikeInfo[] }>(
+      buildWorkspacePaneListArgs(workspaceId),
+      { env: options.env, execFn: options.execFn },
+    );
+    return "exists";
+  } catch {
+    return "unavailable";
+  }
+}
+
 export type HerdrPaneMembership = "member" | "foreign" | "unavailable";
 
 /**

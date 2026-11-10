@@ -95,19 +95,21 @@ describe("injectReplyIntoHerdrPane", () => {
     );
   });
 
-  it("removes the mapping when the pane is empty or unreadable", async () => {
+  it("retains the mapping when the pane capture is empty or inconclusive", async () => {
+    // Whitespace-only capture is inconclusive; mapping is retained for retry on next poll
     herdrMocks.captureHerdrWorkerPane.mockResolvedValue("   ");
     await expect(
       injectReplyIntoHerdrPane("w9:p2", "hi", "discord", config),
     ).resolves.toBe(false);
-    expect(registryMocks.removeMessagesByPane).toHaveBeenCalledWith("w9:p2");
+    expect(registryMocks.removeMessagesByPane).not.toHaveBeenCalled();
 
     vi.clearAllMocks();
+    // Capture exception is also inconclusive; mapping is retained for retry
     herdrMocks.captureHerdrWorkerPane.mockRejectedValue(new Error("pane_gone"));
     await expect(
       injectReplyIntoHerdrPane("w9:p2", "hi", "discord", config),
     ).resolves.toBe(false);
-    expect(registryMocks.removeMessagesByPane).toHaveBeenCalledWith("w9:p2");
+    expect(registryMocks.removeMessagesByPane).not.toHaveBeenCalled();
     expect(herdrMocks.herdrSendPrompt).not.toHaveBeenCalled();
   });
 
