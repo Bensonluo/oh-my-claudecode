@@ -10,6 +10,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 const herdrMocks = vi.hoisted(() => ({
   captureHerdrWorkerPane: vi.fn(),
   herdrSendPrompt: vi.fn(),
+  isHerdrWorkerAlive: vi.fn(),
 }));
 
 const registryMocks = vi.hoisted(() => ({
@@ -23,6 +24,7 @@ vi.mock("../../team/herdr-session.js", async (importOriginal) => {
     ...actual,
     captureHerdrWorkerPane: herdrMocks.captureHerdrWorkerPane,
     herdrSendPrompt: herdrMocks.herdrSendPrompt,
+    isHerdrWorkerAlive: herdrMocks.isHerdrWorkerAlive,
   };
 });
 
@@ -95,21 +97,34 @@ describe("injectReplyIntoHerdrPane", () => {
     );
   });
 
-  it("retains the mapping when the pane capture is empty or inconclusive", async () => {
-    // Whitespace-only capture is inconclusive; mapping is retained for retry on next poll
+  it("keeps the mapping when the capture is empty but the pane agent still runs", async () => {
     herdrMocks.captureHerdrWorkerPane.mockResolvedValue("   ");
+    herdrMocks.isHerdrWorkerAlive.mockResolvedValue(true);
     await expect(
       injectReplyIntoHerdrPane("w9:p2", "hi", "discord", config),
     ).resolves.toBe(false);
+    expect(herdrMocks.isHerdrWorkerAlive).toHaveBeenCalledWith("w9:p2");
     expect(registryMocks.removeMessagesByPane).not.toHaveBeenCalled();
+    expect(herdrMocks.herdrSendPrompt).not.toHaveBeenCalled();
+  });
 
-    vi.clearAllMocks();
-    // Capture exception is also inconclusive; mapping is retained for retry
-    herdrMocks.captureHerdrWorkerPane.mockRejectedValue(new Error("pane_gone"));
+  it("keeps the mapping when Herdr cannot report whether the pane agent runs", async () => {
+    herdrMocks.captureHerdrWorkerPane.mockRejectedValue(new Error("timeout"));
+    herdrMocks.isHerdrWorkerAlive.mockRejectedValue(new Error("herdr unavailable"));
     await expect(
       injectReplyIntoHerdrPane("w9:p2", "hi", "discord", config),
     ).resolves.toBe(false);
     expect(registryMocks.removeMessagesByPane).not.toHaveBeenCalled();
+    expect(herdrMocks.herdrSendPrompt).not.toHaveBeenCalled();
+  });
+
+  it("removes the mapping when the capture fails and no agent runs in the pane", async () => {
+    herdrMocks.captureHerdrWorkerPane.mockRejectedValue(new Error("pane_gone"));
+    herdrMocks.isHerdrWorkerAlive.mockResolvedValue(false);
+    await expect(
+      injectReplyIntoHerdrPane("w9:p2", "hi", "discord", config),
+    ).resolves.toBe(false);
+    expect(registryMocks.removeMessagesByPane).toHaveBeenCalledWith("w9:p2");
     expect(herdrMocks.herdrSendPrompt).not.toHaveBeenCalled();
   });
 

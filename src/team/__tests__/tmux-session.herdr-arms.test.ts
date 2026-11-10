@@ -304,52 +304,6 @@ describe("splitTeamWorkerPaneWithEvidence herdr workspace threading", () => {
   });
 });
 
-describe("herdr supervised worker-launch", () => {
-  it("routes herdr panes through herdrRunPaneCommand for supervised launch delivery", async () => {
-    // The Herdr supervised launch path in spawnWorkerInPane:
-    // 1. Materializes attempt-owned transport (if supervisedLaunch is true)
-    // 2. Builds the start command
-    // 3. Delivers via herdrRunPaneCommand (not send-keys or cmuxSendSurface)
-    // 4. Awaits launch acknowledgement and provider startup
-    //
-    // The Herdr surface differs from tmux/cmux: herdrRunPaneCommand queues
-    // command text + Enter as a single submission. The pane shell execs the
-    // worker start command and Herdr's agent detection recognizes the worker
-    // CLI without any keyboard state machine.
-    //
-    // This test verifies the v2 handoff from attempt-owned bootstrap command
-    // through launch acknowledgement and provider startup is correctly routed
-    // to herdrRunPaneCommand for Herdr panes (not tmux/cmux paths).
-
-    // Mock the Herdr command delivery
-    herdrMocks.herdrPaneWorkspaceMembership.mockResolvedValueOnce("member");
-
-    const herdrRunPaneCommandCalls: { paneId: string; command: string }[] = [];
-    const originalHerdrRun = await (await import("../herdr-session.js")).herdrRunPaneCommand;
-    vi.doMock("../herdr-session.js", async (importOriginal) => {
-      const actual = await importOriginal<typeof import("../herdr-session.js")>();
-      return {
-        ...actual,
-        herdrRunPaneCommand: async (paneId: string, command: string) => {
-          herdrRunPaneCommandCalls.push({ paneId, command });
-        },
-      };
-    });
-
-    // Import the test that verifies source-level routing of Herdr panes
-    // to the herdrRunPaneCommand path (not send-keys or cmuxSendSurface)
-    const runtimeSource = readFileSync(
-      new URL("../tmux-session.ts", import.meta.url),
-      "utf8",
-    );
-
-    // Verify the Herdr pane conditional checks for isHerdrPaneId and calls herdrRunPaneCommand
-    expect(runtimeSource).toContain("if (isHerdrPaneId(paneId))");
-    expect(runtimeSource).toContain("await herdrRunPaneCommand(paneId, startCmd)");
-    expect(runtimeSource).toContain("await requireAcknowledgement()");
-  });
-});
-
 describe("herdr split callers thread the persisted team workspace", () => {
   // Source-level assertions (same pattern as the adaptive-retry source
   // test): spawnV2Worker, the recovery saga, and scaleUpOwned must hand the

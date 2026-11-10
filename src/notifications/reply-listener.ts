@@ -44,6 +44,7 @@ import {
 import {
   captureHerdrWorkerPane,
   herdrSendPrompt,
+  isHerdrWorkerAlive,
 } from "../team/herdr-session.js";
 import { isHerdrPaneId, resolveTeamMultiplexer } from "../team/tmux-session.js";
 import { getCurrentHerdrPaneId } from "./tmux.js";
@@ -617,11 +618,21 @@ export async function injectReplyIntoHerdrPane(
   }
 
   if (!content.trim()) {
-    log(
-      `WARN: Herdr pane ${paneId} capture was empty or inconclusive. Retrying on next poll.`,
-    );
-    // Capture timeout or empty output is inconclusive; do not prune mappings.
-    // Only remove mappings when pane is confirmed absent (not just empty capture).
+    // An empty or failed capture alone is inconclusive. Prune the mapping only
+    // when Herdr confirms no agent runs in the pane; keep it when Herdr itself
+    // cannot be queried so the next poll can retry.
+    let alive: boolean;
+    try {
+      alive = await isHerdrWorkerAlive(paneId);
+    } catch {
+      alive = true;
+    }
+    if (!alive) {
+      log(`WARN: Herdr pane ${paneId} has no running agent. Removing its mappings.`);
+      removeMessagesByPane(paneId);
+    } else {
+      log(`WARN: Herdr pane ${paneId} capture was empty or inconclusive. Retrying on next poll.`);
+    }
     return false;
   }
 
