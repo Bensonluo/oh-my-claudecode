@@ -45,7 +45,8 @@ import {
   captureHerdrWorkerPane,
   herdrSendPrompt,
 } from "../team/herdr-session.js";
-import { isHerdrPaneId, resolveTeamMultiplexer, getCurrentHerdrPaneId } from "../team/tmux-session.js";
+import { isHerdrPaneId, resolveTeamMultiplexer } from "../team/tmux-session.js";
+import { getCurrentHerdrPaneId } from "./tmux.js";
 import {
   lookupByMessageId,
   lockRegistryIfEmpty,

@@ -199,7 +199,7 @@ export async function notify(
     ) {
       try {
         const { isHerdrPaneId } = await import(
-          "../team/herdr-session.js"
+          "../team/tmux-session.js"
         );
         const tailLines = getTmuxTailLines(config);
         let rawTail: string | undefined;
