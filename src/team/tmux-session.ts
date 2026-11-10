@@ -5336,7 +5336,9 @@ export async function injectToLeaderPane(
 ): Promise<boolean> {
   const prefixed = `[OMC_TMUX_INJECT] ${message}`.slice(0, 200);
 
-  if (!isCmuxSurfaceTarget(leaderPaneId) && !tmuxServerIdentity) return false;
+  // Herdr panes have no tmux server identity, and cmux surfaces use different transport.
+  // Allow both to pass through to their respective injection handlers below.
+  if (!isCmuxSurfaceTarget(leaderPaneId) && !isHerdrPaneId(leaderPaneId) && !tmuxServerIdentity) return false;
   if (tmuxServerIdentity) {
     return guardedSendLiteralAndEnter(
       leaderPaneId,

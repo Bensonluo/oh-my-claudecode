@@ -45,7 +45,7 @@ import {
   captureHerdrWorkerPane,
   herdrSendPrompt,
 } from "../team/herdr-session.js";
-import { isHerdrPaneId, resolveTeamMultiplexer } from "../team/tmux-session.js";
+import { isHerdrPaneId, resolveTeamMultiplexer, getCurrentHerdrPaneId } from "../team/tmux-session.js";
 import {
   lookupByMessageId,
   lockRegistryIfEmpty,
@@ -1391,12 +1391,15 @@ export function startReplyListener(
     };
   }
 
-  // Check for tmux. Herdr-backed panes inject through the Herdr agent
-  // surface, so the multiplexer being elected to herdr also unlocks startup.
-  if (!isTmuxAvailable() && resolveTeamMultiplexer() !== "herdr") {
+  // Check for tmux or Herdr context. Herdr-backed panes (team multiplexer=herdr
+  // or ambient HERDR_PANE_ID) inject through the Herdr agent surface, so either
+  // setting unlocks startup even when tmux is absent.
+  const ambientHerdrPane = getCurrentHerdrPaneId();
+  const herdrBackend = resolveTeamMultiplexer() === "herdr";
+  if (!isTmuxAvailable() && !herdrBackend && !ambientHerdrPane) {
     return {
       success: false,
-      message: "tmux not available - reply injection requires tmux",
+      message: "tmux not available and no Herdr context found - reply injection requires tmux or Herdr",
     };
   }
 
