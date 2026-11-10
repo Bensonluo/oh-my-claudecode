@@ -44125,19 +44125,51 @@
     {
       "pullNumber": 4945,
       "targetRef": "dev",
-      "mergeBaseSha": "08ad1a4e4be10d4414f7ab832c3f52c4e2b170fe",
-      "headSha": "da71204885de15cb6cb62ae4745fdaff70b6fe3b",
+      "mergeBaseSha": "7c0127b22c8b59477d61dad9e2f5483caafb3ad9",
+      "headSha": "9cfec72ddf2211f666e41103b52c494310a0cf1f",
       "owner": "Yeachan-Heo",
       "expiresAt": "2026-12-31T23:59:59.999Z",
       "generatedDelta": {
         "count": 1,
-        "sha256": "df88a14236fa04626b2aefe0cdaeaa19dd7f36f57fbc2e2c5803a3da1da2eead"
+        "sha256": "b3caf5a2ac165b8667358dad0739c9bea2bb419a9fa02c85c670a26fa97dc3c4"
       },
       "generatedFiles": [
         {
           "status": "modified",
           "filename": "bridge/claude-md-coordinator.cjs",
           "sha": "fb45be27cbf100664dad4828977dc9f6dd2a9d26",
+          "previousFilename": null
+        }
+      ]
+    },
+    {
+      "pullNumber": 4955,
+      "targetRef": "dev",
+      "mergeBaseSha": "0fa697c4577d8131f36c993e202ad00e954ff888",
+      "headSha": "8d49bc789dd6c8a750ba3017cf1f5f51ed2e08c0",
+      "owner": "Yeachan-Heo",
+      "expiresAt": "2026-12-31T23:59:59.999Z",
+      "generatedDelta": {
+        "count": 3,
+        "sha256": "db9eb47e82b60ceeb5457c769c498367afbce6516a72709cf777ba662244eb3d"
+      },
+      "generatedFiles": [
+        {
+          "status": "modified",
+          "filename": "bridge/cli.cjs",
+          "sha": "9705d7308f02602c98f2ca347ad13444b97a2124",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "bridge/mcp-server.cjs",
+          "sha": "3cd0b1f9939060dcd57c4794c6f44ea515bc5004",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "bridge/team-mcp.cjs",
+          "sha": "73c2d44483ac2f27727b7aa79d67935eed6a6706",
           "previousFilename": null
         }
       ]
