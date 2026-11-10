@@ -5,15 +5,25 @@
   "provenance": {
     "base": "05c800f40d1ad53b42a78609d2667ef4f726808b",
     "planningHead": "0a91273e61dbbd47eb0af4c02844409251e08398",
+<<<<<<< HEAD
     "head": "3df8ffcb978fe710909193eea9598eb87f84c9e3",
     "sourceSha256": "6bf457d6708a40c40af91f670874ffba77217a31b2d8224e469cef8ea0c39b6f",
+=======
+    "head": "4f8e09d4a858fc560f7d512355f368e2aa8a479f",
+    "sourceSha256": "a531aaa8745e58529a6d6e8237ce25dd4997836c921f6fbd0fb8b8cf13a25af1",
+>>>>>>> origin/dev
     "generatedAt": null,
     "generator": "scripts/generate-inventory-graph.mjs"
   },
   "base": "05c800f40d1ad53b42a78609d2667ef4f726808b",
   "planningHead": "0a91273e61dbbd47eb0af4c02844409251e08398",
+<<<<<<< HEAD
   "head": "3df8ffcb978fe710909193eea9598eb87f84c9e3",
   "sourceSha256": "6bf457d6708a40c40af91f670874ffba77217a31b2d8224e469cef8ea0c39b6f",
+=======
+  "head": "4f8e09d4a858fc560f7d512355f368e2aa8a479f",
+  "sourceSha256": "a531aaa8745e58529a6d6e8237ce25dd4997836c921f6fbd0fb8b8cf13a25af1",
+>>>>>>> origin/dev
   "counts": {
     "public": {
       "skills": 84,
@@ -28,8 +38,13 @@
       "toolFiles": 65,
       "libFiles": 49,
       "templateHooks": 25,
+<<<<<<< HEAD
       "srcFiles": 1458,
       "total": 1483
+=======
+      "srcFiles": 1448,
+      "total": 1473
+>>>>>>> origin/dev
     },
     "generated": {
       "distFiles": 5639,
@@ -41378,6 +41393,11 @@
         "path": "src/__tests__/jev-resolve-script.test.mjs"
       },
       {
+        "id": "src/__tests__/jev-shadow-noul.test.mjs",
+        "kind": "src",
+        "path": "src/__tests__/jev-shadow-noul.test.mjs"
+      },
+      {
         "id": "src/__tests__/job-state-db.test.ts",
         "kind": "src",
         "path": "src/__tests__/job-state-db.test.ts"
@@ -48261,6 +48281,11 @@
         "id": "tests/integration/jev-active-mode-repro.test.ts",
         "kind": "other",
         "path": "tests/integration/jev-active-mode-repro.test.ts"
+      },
+      {
+        "id": "tests/integration/jev-advisory-points.test.ts",
+        "kind": "other",
+        "path": "tests/integration/jev-advisory-points.test.ts"
       },
       {
         "id": "tests/integration/jev-max-effort-always.test.ts",
@@ -56217,6 +56242,16 @@
       {
         "from": "src/__tests__/jev-resolve-script.test.mjs",
         "to": "src/hooks/jev/config.ts",
+        "kind": "imports"
+      },
+      {
+        "from": "src/__tests__/jev-shadow-noul.test.mjs",
+        "to": "external:vitest",
+        "kind": "imports"
+      },
+      {
+        "from": "src/__tests__/jev-shadow-noul.test.mjs",
+        "to": "scripts/lib/jev-shadow.mjs",
         "kind": "imports"
       },
       {
@@ -91695,6 +91730,51 @@
         "kind": "imports"
       },
       {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "external:node:child_process",
+        "kind": "imports"
+      },
+      {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "external:node:fs",
+        "kind": "imports"
+      },
+      {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "external:node:http",
+        "kind": "imports"
+      },
+      {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "external:node:http",
+        "kind": "type-imports"
+      },
+      {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "external:node:os",
+        "kind": "imports"
+      },
+      {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "external:node:path",
+        "kind": "imports"
+      },
+      {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "external:node:url",
+        "kind": "imports"
+      },
+      {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "external:vitest",
+        "kind": "imports"
+      },
+      {
+        "from": "tests/integration/jev-advisory-points.test.ts",
+        "to": "src/lib/worktree-paths.ts",
+        "kind": "imports"
+      },
+      {
         "from": "tests/integration/jev-max-effort-always.test.ts",
         "to": "external:node:child_process",
         "kind": "imports"
@@ -93146,6 +93226,7 @@
       }
     ],
     "stats": {
+<<<<<<< HEAD
       "nodeCount": 8270,
       "edgeCount": 8918,
       "importEdgeCount": 7459,
@@ -93154,4 +93235,14 @@
   },
   "inventorySha256": "7de8a1170c264ed046e9ef30de6eb51f20fe954356172d6aad6f1e64f87c47d1",
   "manifestSha256": "7605007e7ec93d565ef1d0815c94bb5d3b221fc1a244ba2a9f3c1eeecb4e0d39"
+=======
+      "nodeCount": 8260,
+      "edgeCount": 8865,
+      "importEdgeCount": 7412,
+      "registerEdgeCount": 105
+    }
+  },
+  "inventorySha256": "a6bc1a36066b6e9d37b02f940c1f61d6c1422f17d89b04ceb1cb5d7073fc6166",
+  "manifestSha256": "2457a942f31d51c43001aab6680ac47846fa034ff32e66dda6339ce282e2b52a"
+>>>>>>> origin/dev
 }
