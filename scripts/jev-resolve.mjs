@@ -50,6 +50,54 @@ function positiveInt(raw, fallback, max = Number.MAX_SAFE_INTEGER) {
 }
 
 /**
+ * Per-point excerpt limit: OMC_JEV_EXCERPT_CHARS_<POINT>, with the point name
+ * upper-cased and dashes turned into underscores (model-routing reads
+ * OMC_JEV_EXCERPT_CHARS_MODEL_ROUTING). Undefined when that variable is unset
+ * or not a canonical positive integer. Mirror of excerptCharsFor in config.ts.
+ */
+export function pointExcerptChars(point, env = process.env) {
+  const name = "OMC_JEV_EXCERPT_CHARS_" + String(point).toUpperCase().replace(/-/g, "_");
+  return positiveInt(env[name], undefined);
+}
+
+/**
+ * Points whose state needs more than the global default to be judged at all.
+ * model-routing judges the work behind the task, which 200 characters hide.
+ * loop-continuation judges whether the task is complete from the last
+ * assistant message, which persistent-mode.mjs already bounds to 2000
+ * characters (boundLastAssistantMessage); a 200-character cut keeps only its
+ * opening. compaction judges tool results by their start and end and the
+ * user's last messages (the hooks module bounds them itself, at most 4000
+ * characters). task-size, skill-trigger and intent judge the user's prompt and
+ * learner-extraction the assistant message; a 200-character cut keeps only
+ * the opening of either. learner-extraction uses the same 2000 characters as
+ * loop-continuation. Mirror of POINT_DEFAULT_EXCERPT_CHARS in config.ts.
+ */
+const POINT_DEFAULT_EXCERPT_CHARS = {
+  "model-routing": 12000,
+  "task-size": 4000,
+  "skill-trigger": 1000,
+  intent: 1000,
+  "learner-extraction": 2000,
+  "loop-continuation": 2000,
+  compaction: 4000,
+};
+
+/**
+ * Excerpt limit for one point: its own variable, else the point's default
+ * (POINT_DEFAULT_EXCERPT_CHARS), else OMC_JEV_EXCERPT_CHARS, else 200.
+ * The global variable does not apply to a point with its own default.
+ */
+export function resolveExcerptChars(point, env = process.env) {
+  return (
+    pointExcerptChars(point, env) ??
+    (Object.hasOwn(POINT_DEFAULT_EXCERPT_CHARS, point)
+      ? POINT_DEFAULT_EXCERPT_CHARS[point]
+      : positiveInt(env.OMC_JEV_EXCERPT_CHARS, DEFAULT_EXCERPT_CHARS))
+  );
+}
+
+/**
  * Resolve the script-side Jev timeout using the same strict contract for the
  * HTTP resolver and its synchronous active-mode parent process.
  */
@@ -85,6 +133,13 @@ export function serializeQuestions(questions) {
 }
 
 /**
+ * Points that `all` and `all:active` never enable: they send more than the
+ * bounded excerpts of the other points, so each needs its own opt-in. Mirror
+ * of NAMED_ONLY_POINTS in src/hooks/jev/config.ts.
+ */
+export const NAMED_ONLY_POINTS = new Set(["compaction"]);
+
+/**
  * Mirror of parseJevConfig + pointState in src/hooks/jev/config.ts. Returns
  * the tri-state decision the TS resolver makes for one point:
  * off | shadow | active.
@@ -93,6 +148,9 @@ export function serializeQuestions(questions) {
  * mode, OMC_JEV_PLAN_MODE=shadow runs opted-in points in shadow and
  * OMC_JEV_PLAN_MODE=off turns them off; any other value changes nothing.
  * Script channel only: the TS resolver receives no permission mode.
+ *
+ * Points in NAMED_ONLY_POINTS run only when OMC_JEV names them; `all` and
+ * `all:active` leave them off and never activate them.
  */
 export function parseJevEnv(point, env = process.env, permissionMode) {
   const raw = (env.OMC_JEV || "").trim();
@@ -114,6 +172,10 @@ export function parseJevEnv(point, env = process.env, permissionMode) {
       listed = true;
       if (isActive) active = true;
     }
+  }
+  if (NAMED_ONLY_POINTS.has(point)) {
+    sawAll = false;
+    activateAll = false;
   }
   if (!sawAll && !listed) return "off";
   if (permissionMode === "plan") {
@@ -226,10 +288,14 @@ export async function resolveRequest(
   if (mode === "off") {
     return { mode, answer: null, answers: null, confidence: undefined, durationMs: 0 };
   }
-  const bound = boundExcerpts(
-    { state: request.state, questions: request.questions },
-    positiveInt(env.OMC_JEV_EXCERPT_CHARS, DEFAULT_EXCERPT_CHARS),
-  );
+  // Only the state carries user text. Question definitions are static text
+  // written by the hook scripts and go out whole: bounding them would cut the
+  // model-routing effort instructions (295 characters) and the intent
+  // criterion (209). A question must never embed user text.
+  const bound = {
+    state: boundExcerpts(request.state, resolveExcerptChars(request.point, env)),
+    questions: request.questions,
+  };
   const controller = new AbortController();
   let timer;
   const timeoutMs = resolveJevTimeoutMs(env);

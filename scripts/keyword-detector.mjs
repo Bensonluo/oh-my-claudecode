@@ -208,6 +208,10 @@ function isExplicitRalplanSlashInvocation(prompt) {
   return /^\s*\/(?:oh-my-claudecode:)?ralplan(?:\s|$)/i.test(prompt);
 }
 
+function isExplicitRalphSlashInvocation(prompt) {
+  return /^\s*\/(?:oh-my-claudecode:)?ralph(?:\s|$|:)/i.test(prompt);
+}
+
 function isExplicitAskSlashInvocation(prompt) {
   return /^\s*\/(?:oh-my-claudecode:)?ask\s+(?:claude|codex|gemini|antigravity|agy|grok|cursor|muse)\b/i.test(prompt);
 }
@@ -221,10 +225,18 @@ const ANTI_SLOP_EXPLICIT_PATTERN = /\b(ai[\s-]?slop|anti[\s-]?slop|deslop|de[\s-
 const ANTI_SLOP_ACTION_PATTERN = /\b(clean(?:\s*up)?|cleanup|refactor|simplify|dedupe|de-duplicate|prune)\b/i;
 const ANTI_SLOP_SMELL_PATTERN = /\b(slop|duplicate(?:d|s)?|duplication|dead\s+code|unused\s+code|over[\s-]?abstract(?:ion|ed)?|wrapper\s+layers?|boundary\s+violations?|needless\s+abstractions?|unnecessary\s+abstractions?|ai[\s-]?generated|generated\s+code|tech\s+debt)\b/i;
 
+// Action + smell must share one sentence: a long review prompt can say
+// "duplicate execution" in one place and "simplify the architecture" far later.
+// Explicit "ai-slop"/"deslop" still goes through the informational-mention filter.
 function isAntiSlopCleanupRequest(text) {
-  return ANTI_SLOP_EXPLICIT_PATTERN.test(text) ||
-    (ANTI_SLOP_ACTION_PATTERN.test(text) && ANTI_SLOP_SMELL_PATTERN.test(text));
+  if (hasActionableKeyword(text, ANTI_SLOP_EXPLICIT_PATTERN)) return true;
+  return text.split(/[.!?;\n]+/).some((sentence) =>
+    ANTI_SLOP_ACTION_PATTERN.test(sentence) && ANTI_SLOP_SMELL_PATTERN.test(sentence));
 }
+
+// Skills that edit code; never auto-routed when the prompt forbids implementation.
+const CODE_EDITING_SKILLS = new Set(['ai-slop-cleaner', 'autopilot', 'ralph', 'ultragoal', 'tdd']);
+const NO_IMPLEMENT_PATTERN = /\b(?:do\s+not|don'?t|never|without)\s+(?:begin\s+|start\s+)?implement(?:ing|ation)?\b|\bno\s+(?:code\s+)?(?:changes|edits)\b|\bread[\s-]only\s+(?:review|audit|investigation)\b/i;
 
 /** Review-outcome labels that appear together in seeded review instruction text. */
 const REVIEW_SEED_OUTCOME_RES = [
@@ -1081,7 +1093,7 @@ function hasValidWorkflowDescriptor(state, sessionId) {
 
 
 // Create state file for a mode
-async function activateState(directory, prompt, stateName, sessionId) {
+async function activateState(directory, prompt, stateName, sessionId, options = {}) {
   const now = new Date().toISOString();
   // Sanitize prompt BEFORE writing to state: prevents pasted system echoes
   // and oversized blobs from being persisted and re-emitted by Stop hook.
@@ -1098,11 +1110,23 @@ async function activateState(directory, prompt, stateName, sessionId) {
       prompt: safePrompt,
       session_id: sessionId || undefined,
       project_path: directory,
-      awaiting_confirmation: true,
-      awaiting_confirmation_set_at: now,
       last_checked_at: now,
       prd_mode: true, // CRITICAL: Enable PRD mode for ralph (issue #4363)
     };
+    // A typed `/oh-my-claudecode:ralph` IS the confirmation. Arming the
+    // awaiting_confirmation flag here would suppress the Stop hook for
+    // AWAITING_CONFIRMATION_TTL_MS, and the only clearer
+    // (confirmSkillModeStates on a Skill tool call) never runs on the slash
+    // path — [CC] expands the skill body without a Skill tool use. A short
+    // first turn therefore ended the loop silently. Prose activation
+    // ("use ralph for this") keeps the flag so an accidental mention cannot
+    // hijack the session.
+    if (options.confirmedBySlash === true) {
+      state.invocation_source = 'slash';
+    } else {
+      state.awaiting_confirmation = true;
+      state.awaiting_confirmation_set_at = now;
+    }
   } else if (stateName === 'ralplan') {
     // Ralplan needs active + session_id for stop-hook enforcement
     state = {
@@ -2065,6 +2089,9 @@ async function main() {
 
     // Resolve conflicts
     let resolved = resolveConflicts(uniqueMatches);
+    if (NO_IMPLEMENT_PATTERN.test(cleanPrompt) && !/^\s*\//.test(prompt)) {
+      resolved = resolved.filter((m) => !CODE_EDITING_SKILLS.has(m.name));
+    }
 
     const permissionMode = data.permission_mode;
     if (isJevShadowOptedIn('skill-trigger', process.env, permissionMode)) {
@@ -2160,7 +2187,7 @@ async function main() {
         const slashInvokedKeywords = new Set();
         if (isExplicitRalplanSlashInvocation(cleanPrompt)) slashInvokedKeywords.add('ralplan');
         // Check for other slash modes: /oh-my-claudecode:ralph, /oh-my-claudecode:autopilot, etc.
-        if (/^\s*\/(?:oh-my-claudecode:)?ralph(?:\s|$|:)/i.test(cleanPrompt)) slashInvokedKeywords.add('ralph');
+        if (isExplicitRalphSlashInvocation(cleanPrompt)) slashInvokedKeywords.add('ralph');
         if (/^\s*\/(?:oh-my-claudecode:)?autopilot(?:\s|$|:)/i.test(cleanPrompt)) slashInvokedKeywords.add('autopilot');
         if (/^\s*\/(?:oh-my-claudecode:)?team(?:\s|$|:)/i.test(cleanPrompt)) slashInvokedKeywords.add('team');
         
@@ -2274,7 +2301,11 @@ async function main() {
       ? []
       : resolved.filter(m => ['ralph', 'ultragoal', 'autopilot', 'ralplan'].includes(m.name));
     for (const mode of stateModes) {
-      const activationError = await activateState(directory, prompt, mode.name, sessionId);
+      const activationError = await activateState(directory, prompt, mode.name, sessionId, {
+        // Only a leading slash command counts as the user's confirmation.
+        // A mention inside prose keeps the awaiting-confirmation window.
+        confirmedBySlash: mode.name === 'ralph' && isExplicitRalphSlashInvocation(prompt),
+      });
       if (activationError === 'workflow_descriptor_integrity_failed') {
         console.log(JSON.stringify(createHookOutput('workflow_descriptor_integrity_failed')));
         return;

@@ -71,6 +71,17 @@ function readPositiveIntegerEnv(name, fallback) {
   return Number.isSafeInteger(parsed) ? parsed : fallback;
 }
 
+function readPercentThresholdEnv(name, fallback) {
+  const raw = process.env[name];
+  if (typeof raw !== 'string' || raw.trim() === '') return fallback;
+  const trimmed = raw.trim();
+  // parseInt('1e2', 10) is 1 and parseInt('85.9', 10) is 85. Either spelling
+  // moved the compaction warning to a percent the user did not set.
+  if (!/^[+-]?\d+$/.test(trimmed)) return fallback;
+  const parsed = Number(trimmed);
+  return Number.isSafeInteger(parsed) ? parsed : fallback;
+}
+
 const AGENT_OUTPUT_ANALYSIS_LIMIT = readPositiveIntegerEnv(
   'OMC_AGENT_OUTPUT_ANALYSIS_LIMIT',
   DEFAULT_AGENT_OUTPUT_ANALYSIS_LIMIT,
@@ -79,8 +90,14 @@ const AGENT_OUTPUT_SUMMARY_LIMIT = readPositiveIntegerEnv(
   'OMC_AGENT_OUTPUT_SUMMARY_LIMIT',
   DEFAULT_AGENT_OUTPUT_SUMMARY_LIMIT,
 );
-const PREEMPTIVE_WARNING_THRESHOLD_PERCENT = parseInt(process.env.OMC_PREEMPTIVE_COMPACTION_WARNING_PERCENT || '70', 10);
-const PREEMPTIVE_CRITICAL_THRESHOLD_PERCENT = parseInt(process.env.OMC_PREEMPTIVE_COMPACTION_CRITICAL_PERCENT || '90', 10);
+const PREEMPTIVE_WARNING_THRESHOLD_PERCENT = readPercentThresholdEnv(
+  'OMC_PREEMPTIVE_COMPACTION_WARNING_PERCENT',
+  70,
+);
+const PREEMPTIVE_CRITICAL_THRESHOLD_PERCENT = readPercentThresholdEnv(
+  'OMC_PREEMPTIVE_COMPACTION_CRITICAL_PERCENT',
+  90,
+);
 // Unlike the two percent thresholds above, this value has no clamp downstream:
 // `now - lastWarningTime >= NaN` is false, so a malformed override made the
 // cooldown never expire and suppressed preemptive warnings for the session.
@@ -1145,6 +1162,17 @@ async function main() {
     const input = await readStdin();
     const data = JSON.parse(input);
 
+    // Opt-in shell checks (OMC_SHELL_CHECKS=1): record known Bash/PowerShell error classes. Never affects the hook.
+    if (process.env.OMC_SHELL_CHECKS === '1' && (data?.tool_name === 'Bash' || data?.tool_name === 'PowerShell')) {
+      try {
+        const { hasShellToolError, recordShellToolErrors } = await import('./lib/shell-checks.mjs');
+        if (hasShellToolError(data)) {
+          const stateRoot = await resolveOmcStateRoot(data.cwd || data.directory || process.cwd());
+          recordShellToolErrors('post-tool-verifier', data, { logDir: join(stateRoot, 'state', 'shell-checks') });
+        }
+      } catch { /* best-effort */ }
+    }
+
     const toolName = data.tool_name || data.toolName || '';
     const rawResponse = data.tool_response || data.toolOutput || '';
     const structuredWriteSuccess =
@@ -1156,6 +1184,13 @@ async function main() {
     const sessionId = data.session_id || data.sessionId || 'unknown';
     const directory = data.cwd || data.directory || process.cwd();
     const toolInput = data.tool_input || data.toolInput || {};
+
+    // Work-state registry of the opt-in Jev compaction point (changed files, git, open tasks, last error).
+    if ((process.env.OMC_JEV || '').includes('compaction')) {
+      try {
+        (await import(pathToFileURL(join(__dirname, 'lib', 'jev-compaction-state.mjs')).href)).recordCompactionState('post', data);
+      } catch { /* never breaks the hook */ }
+    }
 
     // Update session statistics
     const toolCount = updateStats(toolName, sessionId);
