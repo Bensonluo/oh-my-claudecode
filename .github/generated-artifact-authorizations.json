@@ -38929,6 +38929,2108 @@
           "previousFilename": null
         }
       ]
+    },
+    {
+      "pullNumber": 4836,
+      "targetRef": "dev",
+      "mergeBaseSha": "c273e20c43db492265ecdad20a4129bb6d24c438",
+      "headSha": "566eecd89821fcd6c75afb8e1f7e11d7aed34da2",
+      "owner": "Yeachan-Heo",
+      "expiresAt": "2027-01-01T06:26:07.347Z",
+      "generatedDelta": {
+        "count": 348,
+        "sha256": "3e8db27252b3de02445150d2bd6d088c56f41fd1291c7de353b886d2632df347"
+      },
+      "generatedFiles": [
+        {
+          "status": "modified",
+          "filename": "bridge/claude-md-coordinator.cjs",
+          "sha": "4621a80e89edabbfc975edbf704c3cc79d87e83d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "bridge/cli.cjs",
+          "sha": "a3f66bbb8c5dbfe751a2086437547493877e78fa",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "bridge/mcp-server.cjs",
+          "sha": "fe85be8152aa9d917a5040ccf6a2151777e92611",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "bridge/runtime-cli.cjs",
+          "sha": "ef3300594761a1353e20b08c13d7d7609e27685d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "bridge/team-mcp.cjs",
+          "sha": "c1ac1ce02fe24ed561abe7b7b116aead056031d9",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "bridge/team.js",
+          "sha": "87e397131ac90d46eda7dfa756809a57a85c9d7d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/cli-config-stop-callback.test.js",
+          "sha": "84ae0e352c1ce56ca937b8d1d5c443b164f03b60",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/cli-config-stop-callback.test.js.map",
+          "sha": "b5e6e858dc282f31956781a96f263864fda14b90",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/hud-windows.test.js",
+          "sha": "034c49278a1c238726d6a77b66b3dde979a73c33",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/hud-windows.test.js.map",
+          "sha": "c159a59849f531ac9de13cbf5095f083b9799ccc",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/hud/omc-state.test.js",
+          "sha": "9f220b49a71a50a894dc6bca2ab70b41e3cc5698",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/hud/omc-state.test.js.map",
+          "sha": "2a76283eb4d64ce8531837b78d1b893e4de1ce24",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/installer-mcp-config.test.js",
+          "sha": "d22407169229bb844e51edb413faa0ba91cd26d1",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/installer-mcp-config.test.js.map",
+          "sha": "1bb50eb41a4e586f54f4453c57d038007734bc64",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/keyword-detector-echo-guard.test.js",
+          "sha": "3fb3bf5a1a109c431c3c8135de0f36c9d1b3cea7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/keyword-detector-echo-guard.test.js.map",
+          "sha": "b8e376679d2941b5c716fbe8cafd385866974df7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/keyword-detector-script.test.js",
+          "sha": "e63da48b3aef15bb2290767b40aeb94d6042676f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/keyword-detector-script.test.js.map",
+          "sha": "0da06bb35cd3a050afceabe45ecf24800fb6137d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/plugin-skill-budget.test.js",
+          "sha": "d41fabdb01e39beb0a513b093a231866a6c9bd65",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/plugin-skill-budget.test.js.map",
+          "sha": "2243769b36e0082c462e2bc6e2a09b730039f1ee",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/preemptive-compaction-hook.test.js",
+          "sha": "6a7d6cc42217a34299cbbf176e43f51b88adb535",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/preemptive-compaction-hook.test.js.map",
+          "sha": "4049b42cba07f71c2e7ee5a75c1b57107705bd3f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/session-end-process-exit.test.js",
+          "sha": "9f84ac1951ed0902166aea9bcadec5e013c24056",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/session-end-process-exit.test.js.map",
+          "sha": "13ed8ac44a1d5f723299d30c9c49af8a96867886",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/__tests__/session-start-project-memory-rescan.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/__tests__/session-start-project-memory-rescan.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/__tests__/session-start-project-memory-rescan.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/__tests__/session-start-project-memory-rescan.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/skills.test.js",
+          "sha": "90e48ef3118d8d6064c91f4e2e7c33c95ad69b61",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/__tests__/skills.test.js.map",
+          "sha": "8f0d41f22d2f6d30c2c6a552fdab04f71be1c80f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/alias-retirement/__tests__/registry.test.js",
+          "sha": "40d36fddfcb1616f7656524f839e1a95fd753a99",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/alias-retirement/__tests__/registry.test.js.map",
+          "sha": "0ab66b0c187f1a417a0ef822a23d93d743837bd7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/__tests__/launch.test.js",
+          "sha": "43955e4c11acd794ec08cfd54e49db12969caebe",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/__tests__/launch.test.js.map",
+          "sha": "12bf7fde06044d9003aad4a93a7e9b5344d2d5ad",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/mission-board.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/mission-board.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/mission-board.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/mission-board.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/__tests__/ralph-afk.test.js",
+          "sha": "6879ed10c0dc48dbd0b6f559aa18b536285e180b",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/__tests__/ralph-afk.test.js.map",
+          "sha": "d400cc6866ae21ce4f9d665d1b262b228ad5e71e",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/ralph-closeout.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/ralph-closeout.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/ralph-closeout.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/ralph-closeout.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/team-resume-v2.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/team-resume-v2.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/team-resume-v2.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/__tests__/team-resume-v2.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/__tests__/team.test.js",
+          "sha": "ae855596eed8a8add346185013f167a7b4f85354",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/__tests__/team.test.js.map",
+          "sha": "a6cfc7e01655b30384fccc155aef9aae15144b51",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/commands/__tests__/quality-gates.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/commands/__tests__/quality-gates.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/commands/__tests__/quality-gates.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/commands/__tests__/quality-gates.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/commands/quality-gates.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/cli/commands/quality-gates.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/commands/ralph.d.ts",
+          "sha": "5ed189ed155875025f2e036ec9ffd1511056a636",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/commands/ralph.d.ts.map",
+          "sha": "131f5e82d4ccb94a27c052cf2d15726b9cdb3fe1",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/commands/ralph.js",
+          "sha": "d68c8d8f1387382226e76c75abdb171fe339724b",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/commands/ralph.js.map",
+          "sha": "b742fad5a6b3abf039fe5767cc40fe93a0161d65",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/index.d.ts.map",
+          "sha": "42c0e989db02366ac5dbe968f3026bdfe3750eb7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/index.js",
+          "sha": "843d4bf8ac2c83ab3ca24a2e81c0c20c4de4c076",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/index.js.map",
+          "sha": "0d4208cb25e88896f3cc4015de2b17866205fc2e",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/launch.d.ts.map",
+          "sha": "5f23927c9379e4421f4bfad9b7c68c108766b2e8",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/launch.js",
+          "sha": "e7216a91eae105b604deb2e731a7fca3022768c0",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/launch.js.map",
+          "sha": "8a931749e9ee5bfca56fb42b8c431b5c4376a6da",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/team.d.ts.map",
+          "sha": "120562885b7c054484e0126e9bb1ed3e994d72c2",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/team.js",
+          "sha": "d2549fcdafc82de432f32fc3156913037430cf2a",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/cli/team.js.map",
+          "sha": "e30d41f78423e8a512048238a4d06e66a5726cb6",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/config/__tests__/quality-gates.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/config/__tests__/quality-gates.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/config/__tests__/quality-gates.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/config/__tests__/quality-gates.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/config/quality-gates.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/config/quality-gates.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/__tests__/issue-4630-plugin-reconcile.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/__tests__/issue-4630-plugin-reconcile.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/__tests__/issue-4630-plugin-reconcile.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/__tests__/issue-4630-plugin-reconcile.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/__tests__/jev-model-routing.test.js",
+          "sha": "1e3b72edb472c28a78188e9437a221c1197ba2f4",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/__tests__/jev-model-routing.test.js.map",
+          "sha": "c24d1075f1ecf33f2ce2725308e6bd5074e1cee3",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/index.d.ts",
+          "sha": "ff0913b1a8bbded2c2df7af6abe258ad7c0ad456",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/index.d.ts.map",
+          "sha": "636676c547cc1b4776a6eb0308784e57fb31d593",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/index.js",
+          "sha": "ff8ae56d6696c854668fae883485a2ec563d7858",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/index.js.map",
+          "sha": "2fa9b083fc00b7668fad3a3587f67aa801133b09",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/jev-model-routing.d.ts.map",
+          "sha": "77c0c95d68794cdc3e3a5246cbaefc8dd975ca02",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/jev-model-routing.js.map",
+          "sha": "e187bccc2aef31db8ca0adaa5ce1d77e2de22ffa",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/jev-slop-warning.d.ts.map",
+          "sha": "13035c5995466cf6c5803bd2014cf43e572daf0d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/features/jev-slop-warning.js.map",
+          "sha": "e923ab63425e6619cc914b466854a78629a6d35b",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/__tests__/ledger.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/__tests__/ledger.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/__tests__/ledger.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/__tests__/ledger.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/index.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/index.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/index.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/index.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/ledger.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/ledger.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/ledger.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/verification-ledger/ledger.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/__tests__/policy.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/__tests__/policy.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/__tests__/policy.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/__tests__/policy.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/index.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/index.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/index.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/index.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/policy.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/policy.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/policy.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/features/watch-pr/policy.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/__tests__/precompact-restore.test.js",
+          "sha": "7df2fa20f0a0018aab058b7ea9ecfad56ed0417f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/__tests__/precompact-restore.test.js.map",
+          "sha": "806a7f9ff8517b0d3d21d6c998ecda3ddfad0234",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/code-simplifier/jev-shadow.d.ts.map",
+          "sha": "725d5eac84862db8664d54f6d43670ad5b13cb81",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/code-simplifier/jev-shadow.js.map",
+          "sha": "893b8422e9312703075b03f09e0337452df63b4c",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/__tests__/active-mode.test.js",
+          "sha": "a2abbc9b0e23a7fc44a7a9fce7b6445ad4c1a44d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/__tests__/active-mode.test.js.map",
+          "sha": "fe59b3a3bcd3ce146a7c12f940363ac60a52105c",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/__tests__/resolver.test.js",
+          "sha": "49c1ee0b3e945db0a3b0a7a06d05a4880a418e6c",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/__tests__/resolver.test.js.map",
+          "sha": "415ecd6de875a2b03413f7d534226d38fa7c90bf",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/config.d.ts",
+          "sha": "df47866cab541240f271123a86464a884c3a78f0",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/config.d.ts.map",
+          "sha": "ad14e3edbcd9fa5bedec86df1a6eb5f50b74e94f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/config.js",
+          "sha": "27a962dc30ddab7792761775e7131b4a747cae71",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/config.js.map",
+          "sha": "9ed0604dfde43af4d369bbc7002e7b73d7cf9849",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/points.d.ts.map",
+          "sha": "87935743b32e56841b7d33bed52782507e49cc74",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/points.js",
+          "sha": "3bd3d35615446d079682e32fbfbda07112f409e7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/points.js.map",
+          "sha": "722f8fd434db6d99cf6e33b90a9bc328233db004",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/resolver.d.ts.map",
+          "sha": "292de9ce73ac1622850a5bfad2d47c8e6aeac334",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/resolver.js",
+          "sha": "6160f19f2ed1a36f45c930b9a50af17d59a7bc1b",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/jev/resolver.js.map",
+          "sha": "ff396580ab07c52fd8dbb88352cef8a582038b3f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/__tests__/index.test.js",
+          "sha": "8d5c7f08c7aad2272f8961de1af4b2f0b4ba0117",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/__tests__/index.test.js.map",
+          "sha": "7df48646b6993bdb813828efcda266f9aaddf6d3",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/__tests__/jev-shadow.test.js",
+          "sha": "aacc82ca14e30138f57fc1ffac3b2e2f23141f11",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/__tests__/jev-shadow.test.js.map",
+          "sha": "4050be14f16219b3751c954b289cf4848b5c5a2d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/index.d.ts.map",
+          "sha": "eaa7c6e8397c6e5914a3061b560a249df41664c9",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/index.js",
+          "sha": "72806a0f6ae6e9aba0d4150a123682180361ede7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/index.js.map",
+          "sha": "ee33bc765a7e6cebb4df5ef9a4aa2483ce19a32d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/jev-shadow.d.ts.map",
+          "sha": "10d21e6fd62eff2f59996b788fc2523b5ee4331a",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/keyword-detector/jev-shadow.js.map",
+          "sha": "8fda3e5303defe318c2548d66403485939af3ec7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/learner/__tests__/jev-extraction-shadow.test.js",
+          "sha": "184a6a2e55192fdb11998776bb6f961cf3615634",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/learner/__tests__/jev-extraction-shadow.test.js.map",
+          "sha": "94a915b50c7dda8c6e56510df39cd2e2f7134c18",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/learner/jev-shadow.d.ts.map",
+          "sha": "a564fc4baeac96e135180e63856c141c120cf80e",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/learner/jev-shadow.js.map",
+          "sha": "375a05479cb0153b70d3034b93ae941a16266231",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/omc-orchestrator/__tests__/git-diff-stats.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/omc-orchestrator/__tests__/git-diff-stats.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/omc-orchestrator/__tests__/git-diff-stats.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/omc-orchestrator/__tests__/git-diff-stats.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/persistent-mode/__tests__/jev-loop-continuation-shadow.test.js",
+          "sha": "027c4f6bbc24c1637013f9a5577b62e9e01c9394",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/persistent-mode/__tests__/jev-loop-continuation-shadow.test.js.map",
+          "sha": "7da3ef25586e9d18ea5236794934ad9ac6f25f78",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/persistent-mode/index.d.ts.map",
+          "sha": "8f00bb6ee152818239bb43ff95cd0b498b2b3bba",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/persistent-mode/index.js",
+          "sha": "3a9436f473ec916c7af8714e30bed3aed700b039",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/persistent-mode/index.js.map",
+          "sha": "d8b70a4e43e6118e33c0cc79e0ea3df32cfbca48",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/persistent-mode/jev-shadow.d.ts.map",
+          "sha": "de22d693ac432073b004ad6163f43d6b2b7b9979",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/persistent-mode/jev-shadow.js.map",
+          "sha": "37dec0eb9db2de06138d7d3a6fedabcd7d6871b7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/pre-compact/index.d.ts.map",
+          "sha": "494a0d97e9afdcc5bfed6de3729c65fff06062c5",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/pre-compact/index.js",
+          "sha": "950c7296a5f08822328cd01885a2bf54f5cf3981",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/pre-compact/index.js.map",
+          "sha": "ae986504c51a9f9d7234b242355efeda73b9da31",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/preemptive-compaction/__tests__/jev-shadow.test.js",
+          "sha": "f90d5c5b5fdf4ef1a4dc8adfb40973d9a78e847a",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/preemptive-compaction/__tests__/jev-shadow.test.js.map",
+          "sha": "88afb92c517e1741b2d3f018f1a19b27b2baaddc",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/preemptive-compaction/jev-shadow.d.ts.map",
+          "sha": "74592638efcdde6e9dfc62f2d16ae5e2d9b3f3cd",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/preemptive-compaction/jev-shadow.js.map",
+          "sha": "e22266912fa2efdff48615bb9d416431ab72632f",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/__tests__/closeout.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/__tests__/closeout.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/__tests__/closeout.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/__tests__/closeout.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/__tests__/feedback-baseline.test.js",
+          "sha": "453fdf8f9c17a22c51e4ad721b7c4a32cb244d20",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/__tests__/feedback-baseline.test.js.map",
+          "sha": "4c569c7d6cb50b86e2b2177381664688f9a337a6",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/__tests__/prd-read.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/__tests__/prd-read.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/__tests__/prd-read.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/__tests__/prd-read.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/closeout.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/closeout.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/closeout.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/ralph/closeout.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/feedback-baseline.d.ts",
+          "sha": "ef95eb537cedd8290cea1998112435949e8d609d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/feedback-baseline.d.ts.map",
+          "sha": "59f7dbc07c3221ec69e6bdd8cc5a262bf6395cb8",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/feedback-baseline.js",
+          "sha": "8a1b4d9fd435dba2eaf2515b33b5cdaeab38be43",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/feedback-baseline.js.map",
+          "sha": "e37a6ea495f00d3b281308bf73724aa55f279622",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/index.d.ts",
+          "sha": "f0ec0f38b56b636b8901f20f3338a9f4f23d3991",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/index.d.ts.map",
+          "sha": "8e7e54a6688932c210c2684dd0d3172daa6b0518",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/index.js",
+          "sha": "499ba0409a2aa23307b232704321449f993958cd",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/index.js.map",
+          "sha": "f4eb701a4d7fcab85df749212e0b7e3eef303b8d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/jev-shadow.d.ts.map",
+          "sha": "7685db493e290c91cfbf8d7bce5d6edef4ed650f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/jev-shadow.js.map",
+          "sha": "bcbc118b0a36368d47a823e5a73cd1f17b0761c8",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/verifier.d.ts",
+          "sha": "de05025ecd9b221ff30dc197a6b476a73db89c09",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/verifier.d.ts.map",
+          "sha": "2305419061a5cfdbdca1af51fcfcf6961908f107",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/verifier.js",
+          "sha": "056a2aafc8be4d604108c5fb83ae221a5ff31692",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/ralph/verifier.js.map",
+          "sha": "5a888dff34311517b05f8e0c374d8d9746ccb57b",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/__tests__/cleanup-manifest.test.js",
+          "sha": "6978ad2b26ee6c4a85c8a8d738debd5ed39f8d00",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/__tests__/cleanup-manifest.test.js.map",
+          "sha": "e54919b09418c9c771cc757710eb420602d26312",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/foreground-budget.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/foreground-budget.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/foreground-budget.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/foreground-budget.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/lease-cas-drift.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/lease-cas-drift.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/lease-cas-drift.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/lease-cas-drift.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/orphaned-actions.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/orphaned-actions.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/orphaned-actions.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/session-end/__tests__/orphaned-actions.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/__tests__/worker.test.js",
+          "sha": "5119e4985f55bdc5bbb5176e9df9ac000751f495",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/__tests__/worker.test.js.map",
+          "sha": "30c3f55a6f5ee7bdb7d677a7ba237ce7b319a8e0",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/cleanup-manifest.d.ts",
+          "sha": "cc797cffafa44dfcb0508f51a332b08206597cdf",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/cleanup-manifest.d.ts.map",
+          "sha": "39732f345be7ce3b59dbb80ba7cdf6b667f26331",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/cleanup-manifest.js",
+          "sha": "16dfbcf9628a6406e0b84ca5015c56346ebb80d3",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/cleanup-manifest.js.map",
+          "sha": "1d543d1cd102060324f2bc61cdd2374d56f3d248",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/worker.d.ts.map",
+          "sha": "5052b878320ab69ed952ab0930ee498354641e87",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/worker.js",
+          "sha": "810592fb9ab8c6ca0c2052c74cf8f19b34567bb9",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/session-end/worker.js.map",
+          "sha": "655e9df57e1227f75cf459bff6f8a36d9d6e38f8",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/task-size-detector/__tests__/jev-shadow.test.js",
+          "sha": "47cebd955d0c95001d489cecf95df8d49afd0191",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/task-size-detector/__tests__/jev-shadow.test.js.map",
+          "sha": "ae24fdb9b42bcab1d0320c73492a2fac2ded0d34",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/task-size-detector/jev-shadow.d.ts.map",
+          "sha": "0feba3c70ca11b7a58d0fa5efff87ef6a2f396eb",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hooks/task-size-detector/jev-shadow.js.map",
+          "sha": "1fca06250bbaf5b522967d7369e3a4dc91d3a698",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/think-mode/__tests__/detector-boundaries.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/think-mode/__tests__/detector-boundaries.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/think-mode/__tests__/detector-boundaries.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hooks/think-mode/__tests__/detector-boundaries.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hud/__tests__/account.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hud/__tests__/account.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hud/__tests__/account.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hud/__tests__/account.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hud/elements/account.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hud/elements/account.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hud/elements/account.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/hud/elements/account.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/elements/index.d.ts",
+          "sha": "3e40856d2dc53afbc970633449a6e5d7b9f663ad",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/elements/index.d.ts.map",
+          "sha": "b543365cf713300a9c81b382acf658f930dc67f7",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/elements/index.js",
+          "sha": "c50d23b2eeffbccde8eebcf0f3828f9a30ed1338",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/elements/index.js.map",
+          "sha": "c413c90d321b4664ce250646a9945570c429ec07",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/omc-state.d.ts",
+          "sha": "6b5a0866c57e025fc1a7fdf44b7b73410b4efc32",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/omc-state.d.ts.map",
+          "sha": "9e6b76e01516bd64cd091ff4cdbd6fa689aada1a",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/omc-state.js",
+          "sha": "dbbd2b30adcb33771d378fec8b4642b9a2416589",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/omc-state.js.map",
+          "sha": "3c7669bdce7c42797f81dc4af7b25e6e9d72213e",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/render.d.ts.map",
+          "sha": "8a5eba96e190d77bd37a71c252ff528ad2bb0223",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/render.js",
+          "sha": "9fcb38bec63586bf0ec111392fa668651ff512d9",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/render.js.map",
+          "sha": "03edca2cded78bdef06ab4be3ec06894a5e96c6f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/types.d.ts",
+          "sha": "18178c52ecf7f21c138113a910ad42d98726f800",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/types.d.ts.map",
+          "sha": "96aea822a7b3778ef58c3cb674103a2d7885deb5",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/types.js",
+          "sha": "337e283875b313a97a34105b91513a372d67cdd9",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/hud/types.js.map",
+          "sha": "34e84784b9edee6764b3d28f2ba19cb24a678904",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/installer/index.js",
+          "sha": "dbe3e53a4e6f13f78030f994aa89c0a14c687c92",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/installer/index.js.map",
+          "sha": "de57438854efa2694431c908591d82b6decf9dd3",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/installer/mcp-registry.d.ts",
+          "sha": "8ae24d544fd79d47a85baf62ed250b8dc2d0eaaf",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/installer/mcp-registry.d.ts.map",
+          "sha": "247bbba580ac6bf8fddc9acaaed5eb5930bea00f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/installer/mcp-registry.js",
+          "sha": "c29804e6ba963c5e3059ae16b49feca78d08e122",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/installer/mcp-registry.js.map",
+          "sha": "b25cb15aca8acb8acd6f5be4db74c23a60faa35b",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/lib/__tests__/mode-state-activation.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/lib/__tests__/mode-state-activation.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/lib/__tests__/mode-state-activation.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/lib/__tests__/mode-state-activation.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/notifications/__tests__/approval-reply.test.js",
+          "sha": "2c8943faaf7633c56362950cc0f5508a6c0d8839",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/notifications/__tests__/approval-reply.test.js.map",
+          "sha": "94dfff79d86207717b878b2f2d9d1f622face518",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/notifications/reply-listener.js",
+          "sha": "f60f9cf6b3d765732020c250b6a66e5a6e1f1b30",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/notifications/reply-listener.js.map",
+          "sha": "7e3be54a3766a17b82e6b8ecd91325d17284a4f7",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/ack-timeout-env.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/ack-timeout-env.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/ack-timeout-env.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/ack-timeout-env.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/__tests__/git-worktree.test.js",
+          "sha": "dcfd2f42f7d8f8c5675f5c83f1d67dc027471713",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/__tests__/git-worktree.test.js.map",
+          "sha": "866da334e8eae1de6ee839f6329ae19b0dcaebab",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/issue-4816-isCmuxSurfaceTarget.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/issue-4816-isCmuxSurfaceTarget.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/issue-4816-isCmuxSurfaceTarget.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/issue-4816-isCmuxSurfaceTarget.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/pane-trust-prompt-kind.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/pane-trust-prompt-kind.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/pane-trust-prompt-kind.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/pane-trust-prompt-kind.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/ready-timeout-env.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/ready-timeout-env.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/ready-timeout-env.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/ready-timeout-env.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/shell-ready-timeout-env.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/shell-ready-timeout-env.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/shell-ready-timeout-env.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/shell-ready-timeout-env.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/start-submit-timeout-env.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/start-submit-timeout-env.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/start-submit-timeout-env.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/start-submit-timeout-env.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/tmux-session-name-edge-cases.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/tmux-session-name-edge-cases.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/tmux-session-name-edge-cases.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/tmux-session-name-edge-cases.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/worker-launch-windows-runtime.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/worker-launch-windows-runtime.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/worker-launch-windows-runtime.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/worker-launch-windows-runtime.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/worker-launch-windows-supervisor.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/worker-launch-windows-supervisor.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/worker-launch-windows-supervisor.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/team/__tests__/worker-launch-windows-supervisor.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/git-worktree.d.ts",
+          "sha": "0d2f81abbb30a260820d2acc721dc822b1fdad96",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/git-worktree.d.ts.map",
+          "sha": "ec48a576a90cd5427e0632708b1d6dd6962edd68",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/git-worktree.js",
+          "sha": "fe39e12a0ec40d360857e288e26faac0493bdc1b",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/git-worktree.js.map",
+          "sha": "37b8fe39bbffd68c44a77edde320ad79701542c0",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/runtime-v2.d.ts.map",
+          "sha": "82acd2330992ac860a59b6fe67ee3d2406dea65a",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/runtime-v2.js",
+          "sha": "a19b272776314194bd862c8cc568e62bd9cf5e63",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/runtime-v2.js.map",
+          "sha": "03c89693856541c8252587c8799f203f80a55f46",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/tmux-session.d.ts.map",
+          "sha": "8ef691ecaeaf695ddd4c29a661b6c21799dba07f",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/team/tmux-session.js.map",
+          "sha": "f6e67687f6bfb9fa3b62b49af401a8bd42522261",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/tools/__tests__/deepinit-file-identity.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/tools/__tests__/deepinit-file-identity.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/tools/__tests__/deepinit-file-identity.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/tools/__tests__/deepinit-file-identity.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/tools/lsp/__tests__/devcontainer.test.js",
+          "sha": "94811ba17dfb13b4b07eb679c6ca272abb2af577",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/tools/lsp/__tests__/devcontainer.test.js.map",
+          "sha": "79fd41d2177a56e3d5f8f7b03d78fc01608c4ef8",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/tools/lsp/devcontainer.d.ts.map",
+          "sha": "b51db39e5cc4b964cca0049a5b33c8f6ae1a622a",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/tools/lsp/devcontainer.js",
+          "sha": "8bd1bdcc42f27dc1af95f3368b929325058a12f4",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/tools/lsp/devcontainer.js.map",
+          "sha": "c8ad340e77b4addc8197b35a9059ff4483c5972e",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/debug-flag-call-sites.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/debug-flag-call-sites.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/debug-flag-call-sites.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/debug-flag-call-sites.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/debug-flag.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/debug-flag.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/debug-flag.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/debug-flag.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/plugin-cache-file-identity.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/plugin-cache-file-identity.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/plugin-cache-file-identity.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/plugin-cache-file-identity.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/semver-compare.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/semver-compare.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/semver-compare.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/semver-compare.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/windows-search.test.d.ts",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/windows-search.test.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/windows-search.test.js",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/__tests__/windows-search.test.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/debug-flag.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/debug-flag.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/semver-compare.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/semver-compare.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/url.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/url.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/windows-search.d.ts.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "removed",
+          "filename": "dist/utils/windows-search.js.map",
+          "sha": "0000000000000000000000000000000000000000",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/workflow/__tests__/projections.test.js",
+          "sha": "4796b5849ac6a4aab5373ffc7dd47a237850cfba",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/workflow/__tests__/projections.test.js.map",
+          "sha": "7d44689380bbcebb70ce0a291b8ee86287f4c8fe",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/workflow/__tests__/registry.test.js",
+          "sha": "2515d806beedc3f1105314043f107f09e48cb968",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/workflow/registry.d.ts.map",
+          "sha": "1e7b5164970607e07a415c2241037200b86abfb2",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/workflow/registry.js",
+          "sha": "70ec1204a162f949a890a4fe055e72f124dbc31d",
+          "previousFilename": null
+        },
+        {
+          "status": "modified",
+          "filename": "dist/workflow/registry.js.map",
+          "sha": "810c2c84a7256692066c5f7e46bb6c86c69a1349",
+          "previousFilename": null
+        }
+      ]
     }
   ]
 }
