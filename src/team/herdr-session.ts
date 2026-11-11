@@ -264,6 +264,11 @@ export async function ensureHerdrServer(
       detached: true,
       env,
     });
+    // Handle asynchronous errors from the spawned child process; an unhandled
+    // error event would bypass the caller's promise catch, terminating the CLI.
+    child.on('error', (error) => {
+      throw new HerdrError('spawn', `Failed to spawn Herdr server: ${error instanceof Error ? error.message : String(error)}`);
+    });
     child.unref();
 
     const deadline = Date.now() + HERDR_SERVER_START_TIMEOUT_MS;

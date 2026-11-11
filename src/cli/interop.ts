@@ -117,10 +117,12 @@ async function launchInteropHerdrSession(
   }
 
   const workspaceId = herdrWorkspaceIdFromPaneId(herdrPaneId);
+  let allocatedPaneId: string | undefined;
   try {
     console.log(`Creating Codex tab in Herdr workspace ${workspaceId}`);
     await ensureHerdrServer();
     const tab = await herdrCreateWorkerTab(workspaceId, cwd, 'codex');
+    allocatedPaneId = tab.paneId;
     await herdrRunPaneCommand(tab.paneId, 'codex');
 
     console.log('\nInterop session ready!');
@@ -132,6 +134,17 @@ async function launchInteropHerdrSession(
     console.log('- interop_send_message: Send messages');
     console.log('- interop_read_messages: Read messages');
   } catch (error) {
+    // Close the allocated pane before exiting if command delivery failed
+    if (allocatedPaneId) {
+      try {
+        // Import herdrClosePane dynamically to avoid circular dependency
+        const { herdrClosePane } = await import('../team/herdr-session.js');
+        await herdrClosePane(allocatedPaneId);
+      } catch (cleanupError) {
+        // Cleanup failure is logged but doesn't prevent exit
+        console.error('Warning: Failed to close allocated interop pane:', cleanupError instanceof Error ? cleanupError.message : String(cleanupError));
+      }
+    }
     console.error('Error creating Codex tab:', error instanceof Error ? error.message : String(error));
     process.exit(1);
   }

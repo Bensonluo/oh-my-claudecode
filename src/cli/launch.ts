@@ -51,6 +51,7 @@ import {
   herdrCreateWorkerTab,
   herdrCreateWorkspace,
   herdrCloseWorkspace,
+  herdrClosePane,
   herdrRunPaneCommand,
 } from '../team/herdr-session.js';
 import { resolveTeamMultiplexer } from '../team/tmux-session.js';
@@ -926,14 +927,24 @@ async function runClaudeInHerdrWorkspace(cwd: string, args: string[]): Promise<v
   }
 
   let allocatedWorkspaceId: string | undefined;
+  let allocatedPaneId: string | undefined;
   try {
     await ensureHerdrServer();
     allocatedWorkspaceId = await herdrCreateWorkspace(cwd, label);
     const tab = await herdrCreateWorkerTab(allocatedWorkspaceId, cwd, 'claude');
+    allocatedPaneId = tab.paneId;
     await herdrRunPaneCommand(tab.paneId, launch.command);
     console.log(`[omc] Claude launched in Herdr workspace "${label}" (pane ${tab.paneId}).`);
     console.log('[omc] Attach with the Herdr TUI: run `herdr` and open the workspace.');
   } catch (error) {
+    // Close the allocated pane before closing the workspace
+    if (allocatedPaneId) {
+      try {
+        await herdrClosePane(allocatedPaneId);
+      } catch {
+        // Pane cleanup failure is non-fatal; continue with workspace cleanup
+      }
+    }
     // Clean up the allocated Herdr workspace before falling back
     if (allocatedWorkspaceId) {
       try {
