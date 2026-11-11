@@ -17,6 +17,7 @@ const herdrMocks = vi.hoisted(() => ({
     paneId: "w2:p2",
     tabId: "w2:t2",
   })),
+  herdrCloseWorkspace: vi.fn(async () => undefined),
 }));
 
 vi.mock("../herdr-session.js", async (importOriginal) => {
@@ -26,6 +27,7 @@ vi.mock("../herdr-session.js", async (importOriginal) => {
     ensureHerdrServer: herdrMocks.ensureHerdrServer,
     herdrCreateTeamWorkspace: herdrMocks.herdrCreateTeamWorkspace,
     herdrCreateWorkerTab: herdrMocks.herdrCreateWorkerTab,
+    herdrCloseWorkspace: herdrMocks.herdrCloseWorkspace,
   };
 });
 
@@ -106,9 +108,9 @@ describe("createTeamSession herdr zero-worker flow", () => {
     await expect(
       createTeamSession("alpha", 2, "/repo", { multiplexer: "herdr" }),
     ).rejects.toThrow("tab_creation_timeout");
-    // The workspace was allocated, so killTeamSession must have been called
-    // with it. Verify that the Herdr cleanup path was invoked.
-    expect(herdrMocks.herdrCreateTeamWorkspace).toHaveBeenCalledTimes(1);
+    // No worker pane was recorded, but the workspace this call created must
+    // still be closed.
     expect(herdrMocks.herdrCreateWorkerTab).toHaveBeenCalledTimes(1);
+    expect(herdrMocks.herdrCloseWorkspace).toHaveBeenCalledWith("w2");
   });
 });

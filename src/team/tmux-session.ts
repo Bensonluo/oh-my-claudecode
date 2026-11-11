@@ -3540,6 +3540,17 @@ export async function createTeamSession(
         return false;
       }
     }
+    // A Herdr team workspace is always created by this call. When the first
+    // worker tab failed before any pane id was recorded there are no panes for
+    // killTeamSession to prove, so close the empty workspace directly.
+    if (herdrBackend && workerPaneIds.length === 0) {
+      try {
+        await herdrCloseWorkspace(herdrWorkspaceIdFromSessionTarget(teamTarget));
+        return true;
+      } catch {
+        return false;
+      }
+    }
     const ownsProviderResource =
       createdDetachedSession ||
       createdDedicatedWindow ||
