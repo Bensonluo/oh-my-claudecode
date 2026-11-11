@@ -3522,7 +3522,7 @@ export async function createTeamSession(
       : {}),
   });
   const cleanupCreatedResources = async (): Promise<boolean> => {
-    if (!tmuxServerIdentity && !inCmux) return false;
+    if (!tmuxServerIdentity && !inCmux && !herdrBackend) return false;
     if (untrackedProviderAllocation) {
       // An unknown pane response in a pre-existing shared window cannot be
       // repaired by deleting the previously-known panes: the new pane may
@@ -5938,6 +5938,13 @@ export async function killTeamSession(
           ...(provider === "tmux" ? { tmuxServerIdentity: identity } : {}),
         } as MailboxNotificationTarget);
         if (membership.kind !== "owned") {
+          // For Herdr, "foreign" means the pane is not in the workspace,
+          // which is the desired state (already closed or never allocated).
+          // This is idempotent: retrying cleanup after a partial failure should
+          // not treat previously-closed panes as errors.
+          if (provider === "herdr" && membership.kind === "foreign") {
+            continue;
+          }
           cleaned = false;
           continue;
         }

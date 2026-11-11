@@ -94,4 +94,21 @@ describe("createTeamSession herdr zero-worker flow", () => {
     expect(session.workerPaneIds).toEqual(["w2:p2", "w2:p2"]);
     expect(session.sessionName).toBe("herdr:w2");
   });
+
+  it("rolls back the workspace when a worker tab creation fails", async () => {
+    // Codex P1 finding: Include Herdr in the worker-allocation rollback.
+    // When createTeamSession allocates workers up front and a tab fails,
+    // cleanupCreatedResources must not return false immediately for herdr.
+    process.env.HERDR_PANE_ID = "w1:p1";
+    herdrMocks.herdrCreateWorkerTab.mockRejectedValueOnce(
+      new Error("tab_creation_timeout"),
+    );
+    await expect(
+      createTeamSession("alpha", 2, "/repo", { multiplexer: "herdr" }),
+    ).rejects.toThrow("tab_creation_timeout");
+    // The workspace was allocated, so killTeamSession must have been called
+    // with it. Verify that the Herdr cleanup path was invoked.
+    expect(herdrMocks.herdrCreateTeamWorkspace).toHaveBeenCalledTimes(1);
+    expect(herdrMocks.herdrCreateWorkerTab).toHaveBeenCalledTimes(1);
+  });
 });
